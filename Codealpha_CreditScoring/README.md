@@ -1,76 +1,71 @@
-# Codealpha Credit Scoring — Predicting Creditworthiness
+# 💳 Credit Scoring Prediction
 
-This directory contains an exploratory analysis and modeling notebook for predicting creditworthiness using a Kaggle dataset. The notebook performs EDA, data cleaning, feature inspection, and initial modeling to classify applicants as `good` or `bad` credit risks.
+## 📌 Overview
+This project uses machine learning to predict an individual's creditworthiness 
+based on their past financial data. Built as part of my CodeAlpha Machine Learning
+internship.
 
-## Files
+## 🎯 Objective
+Predict an individual's creditworthiness using past financial data.
 
-- `Predicting_Creditworthiness.ipynb` — Jupyter/Colab notebook with the full analysis, visualizations and modeling pipeline.
+## 📊 Dataset
+- **Source:** [Kaggle Data Source](https://www.kaggle.com/datasets/bbjadeja/predicting-creditworthiness)
+- **Records:** `Rows = 1000`
+- **Features:** `Features/Columns = 21`
+  
+- Target variable: Good = 1, Bad = 0
 
-## Dataset
+## 🛠️ Tools & Technologies
+- Python
+- Pandas, NumPy
+- Scikit-learn
+- Matplotlib / Seaborn
+- Google Colab
 
-The notebook uses the "Predicting Creditworthiness" dataset from Kaggle:
+## 🔍 Approach
+1. **Data Cleaning** — handled missing values, checked for outliers/duplicates
+2. **Exploratory Data Analysis (EDA)** — Univariate, and Bivariate Analysis, and log-transform for skewness
 
-- https://www.kaggle.com/datasets/bbjadeja/predicting-creditworthiness
+3. **Feature Engineering** —  One Hot Encoding, and Label Encoding
 
-In the notebook the dataset is downloaded using `kagglehub`:
+4. **Model Building** — trained and compared:
+   - Logistic regression
+   - Random Forest
+   - XGBoost
+   - SVC
+5. **Model Evaluation** — compared using accuracy, precision, recall, F1-score, and AUC-ROC, and Confusion Matrix
 
-```python
-data_path = kh.dataset_download('bbjadeja/predicting-creditworthiness')
-df = pd.read_excel(data_path + '/CreditWorthiness.xlsx')
-```
+## 📈 Results
+| Model |Class-weighted Recall|
+|---|---|
+| Logistic Regression | 68% |
+| Random Forest | 30% |
+| XGBoost | 53% |
+| SVC | 75% |
 
-If you prefer to download the dataset manually, download the Excel file and place it in the same directory or update the notebook to point to the local file path.
+**Best performing model:** SVC with 75% recall
 
-## Quick overview
+## 🚀 How to Run
+1. Clone the repo: [Clone Repo](https://github.com/Melchizedek-Madaki/codealpha_tasks.git)
+2. Open `Predicting_CreditWorthiness.ipynb` in Jupyter or Google Colab
+3. Install dependencies:
 
-- Rows: 1000
-- Columns: 21
-- Target: `Credit Score` (values: `good`, `bad`) — class distribution: 700 good / 300 bad (approx 70/30)
-- Notable columns: checking account balance (`Cbal`), credit duration (`Cdur`), loan amount (`Camt`), savings balance (`Sbal`), employment duration (`Edur`), age, number of existing credits (`NumCred`), etc.
-
-The notebook includes an initial EDA using `skimpy`, checks for missing values and duplicates, basic correlations for numeric features, and discusses class imbalance.
-
-## How to run
-
-Option 1 — Colab (recommended):
-
-- Open the notebook in Colab (the notebook includes a Colab badge linking to the GitHub copy):
-
-  https://colab.research.google.com/github/Melchizedek-Madaki/codealpha_tasks/blob/main/Codealpha_CreditScoring/Predicting_Creditworthiness.ipynb
-
-- Run the cells. The notebook uses `kagglehub` in the first steps to download the dataset into the Colab cache.
-
-Option 2 — Local
-
-1. Install dependencies (example):
+### Production Build
 
 ```bash
-pip install pandas numpy openpyxl skimpy kagglehub
+install numpy as np
+install pandas as pd
+from sklearn.metrics import (
+    precision_score, recall_score, f1_score,
+    roc_auc_score, confusion_matrix, classification_report
+)
+
 ```
 
-2. Download the Kaggle dataset (either with the Kaggle website or the Kaggle CLI) and place `CreditWorthiness.xlsx` in an accessible path.
-
-3. Open `Predicting_Creditworthiness.ipynb` and update the `data_path` / loading cell to point to the local file.
-
-## Requirements
-
-The notebook uses the following Python packages (not exhaustive):
-
-- pandas
-- numpy
-- skimpy
-- kagglehub (used in the notebook to download the dataset)
-- openpyxl (for reading Excel files)
-
-Add more packages as needed if you run into import errors.
-
-## Notes & next steps
-
-- The dataset has a moderate class imbalance (70/30). Consider evaluation metrics beyond accuracy (precision, recall, F1, AUC) and resampling techniques or class-weighted models.
-- The notebook currently performs EDA and basic checks. You can extend it with feature engineering, encoding categorical variables, model training (cross-validation), and explainability (SHAP/LIME).
-
-## Contact
-
-Repository: https://github.com/Melchizedek-Madaki/codealpha_tasks
-
-If you want the README expanded (run instructions, badges, or a requirements.txt), tell me what you'd like and I will add it.
+# Algorithms
+```bash
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from svm import SVC
+from xgboost import XGBClassifier
+```
