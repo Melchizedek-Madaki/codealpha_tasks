@@ -73,7 +73,7 @@ from xgboost import XGBClassifier
 4. Run all cells
 
 ## 📁 Files in this folder
-- `Credit_Scoring.ipynb` — main notebook
+- `Predicting_CreditWorthiness.ipynb` — main notebook
 - `README.md` — this file
 
 ## 🙋 Author
