@@ -69,3 +69,13 @@ from sklearn.ensemble import RandomForestClassifier
 from svm import SVC
 from xgboost import XGBClassifier
 ```
+
+4. Run all cells
+
+## 📁 Files in this folder
+- `Credit_Scoring.ipynb` — main notebook
+- `README.md` — this file
+
+## 🙋 Author
+**Melchizedek Madaki**  
+CodeAlpha Machine Learning Internship
